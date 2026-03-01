@@ -51,7 +51,7 @@ func (c *StoriesCache) Save(articles []domain.Article) error {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
-	if err := os.MkdirAll(filepath.Dir(c.path), 0o755); err != nil {
+	if err := os.MkdirAll(filepath.Dir(c.path), 0o750); err != nil {
 		return fmt.Errorf("mkdir stories cache dir: %w", err)
 	}
 	b, err := json.MarshalIndent(storiesFile{FetchedAt: time.Now(), Articles: articles}, "", "  ")
@@ -59,7 +59,7 @@ func (c *StoriesCache) Save(articles []domain.Article) error {
 		return fmt.Errorf("encode stories cache: %w", err)
 	}
 	tmp := c.path + ".tmp"
-	if err := os.WriteFile(tmp, b, 0o644); err != nil {
+	if err := os.WriteFile(tmp, b, 0o600); err != nil {
 		return fmt.Errorf("write stories tmp: %w", err)
 	}
 	if err := os.Rename(tmp, c.path); err != nil {

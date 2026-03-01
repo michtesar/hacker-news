@@ -6,7 +6,7 @@ import (
 )
 
 func EnsureDir(path string) error {
-	return os.MkdirAll(path, 0o755)
+	return os.MkdirAll(path, 0o750)
 }
 
 func AppDataDir() (string, error) {

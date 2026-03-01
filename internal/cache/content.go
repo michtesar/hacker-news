@@ -67,7 +67,7 @@ func (c *ContentCache) Set(entry domain.ArticleContent) error {
 }
 
 func (c *ContentCache) saveLocked() error {
-	if err := os.MkdirAll(filepath.Dir(c.path), 0o755); err != nil {
+	if err := os.MkdirAll(filepath.Dir(c.path), 0o750); err != nil {
 		return fmt.Errorf("mkdir content cache dir: %w", err)
 	}
 	b, err := json.Marshal(c.entries)
@@ -75,7 +75,7 @@ func (c *ContentCache) saveLocked() error {
 		return fmt.Errorf("encode content cache: %w", err)
 	}
 	tmp := c.path + ".tmp"
-	if err := os.WriteFile(tmp, b, 0o644); err != nil {
+	if err := os.WriteFile(tmp, b, 0o600); err != nil {
 		return fmt.Errorf("write content cache tmp: %w", err)
 	}
 	if err := os.Rename(tmp, c.path); err != nil {

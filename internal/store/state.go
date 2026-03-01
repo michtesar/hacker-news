@@ -56,7 +56,7 @@ func (s *StateStore) load() error {
 }
 
 func (s *StateStore) saveLocked() error {
-	if err := os.MkdirAll(filepath.Dir(s.path), 0o755); err != nil {
+	if err := os.MkdirAll(filepath.Dir(s.path), 0o750); err != nil {
 		return fmt.Errorf("mkdir state dir: %w", err)
 	}
 	b, err := json.MarshalIndent(s.data, "", "  ")
@@ -64,7 +64,7 @@ func (s *StateStore) saveLocked() error {
 		return fmt.Errorf("marshal state: %w", err)
 	}
 	tmp := s.path + ".tmp"
-	if err := os.WriteFile(tmp, b, 0o644); err != nil {
+	if err := os.WriteFile(tmp, b, 0o600); err != nil {
 		return fmt.Errorf("write state tmp: %w", err)
 	}
 	if err := os.Rename(tmp, s.path); err != nil {

@@ -12,12 +12,18 @@ permissions:
 
 jobs:
   release-please:
-    if: ${{ secrets.RELEASE_PLEASE_TOKEN != '' }}
     runs-on: ubuntu-latest
+    env:
+      RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
     steps:
+      - name: Skip when token is missing
+        if: ${{ env.RELEASE_PLEASE_TOKEN == '' }}
+        run: echo "RELEASE_PLEASE_TOKEN is not set; skipping release-please."
+
       - uses: googleapis/release-please-action@v4
+        if: ${{ env.RELEASE_PLEASE_TOKEN != '' }}
         with:
           release-type: go
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          token: ${{ env.RELEASE_PLEASE_TOKEN }}

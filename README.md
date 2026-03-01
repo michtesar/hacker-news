@@ -157,6 +157,10 @@ Release PR automation is configured using:
 - `/Users/michael/Developer/hacker-news/release-please-config.json`
 - `/Users/michael/Developer/hacker-news/.release-please-manifest.json`
 
+Note:
+- The workflow uses `RELEASE_PLEASE_TOKEN` secret.
+- If the secret is missing, the workflow is skipped (so CI stays green).
+
 When a GitHub Release is published, this workflow builds and uploads:
 
 - `hnx_darwin_arm64.tar.gz`

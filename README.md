@@ -1,4 +1,7 @@
 # HNX - Hacker News Design TUI (Go)
+[![CI](https://github.com/michtesar/hacker-news/actions/workflows/ci.yml/badge.svg)](https://github.com/michtesar/hacker-news/actions/workflows/ci.yml)
+[![Security And Compliance](https://github.com/michtesar/hacker-news/actions/workflows/security-compliance.yml/badge.svg)](https://github.com/michtesar/hacker-news/actions/workflows/security-compliance.yml)
+[![Release Please](https://github.com/michtesar/hacker-news/actions/workflows/release-please.yml/badge.svg)](https://github.com/michtesar/hacker-news/actions/workflows/release-please.yml)
 
 A production-style terminal app for reading new Hacker News stories with:
 
@@ -161,16 +164,3 @@ When a GitHub Release is published, this workflow builds and uploads:
 Workflow file:
 
 - `/Users/michael/Developer/hacker-news/.github/workflows/release.yml`
-
-## Homebrew Install
-
-This repo includes a formula at:
-
-- `/Users/michael/Developer/hacker-news/Formula/hnx.rb`
-
-Install from this repository tap:
-
-```bash
-brew tap michael/hacker-news https://github.com/michael/hacker-news
-brew install --HEAD michael/hacker-news/hnx
-```

@@ -1,4 +1,5 @@
 # HNX - Hacker News Design TUI (Go)
+
 [![CI](https://github.com/michtesar/hacker-news/actions/workflows/ci.yml/badge.svg)](https://github.com/michtesar/hacker-news/actions/workflows/ci.yml)
 [![Security And Compliance](https://github.com/michtesar/hacker-news/actions/workflows/security-compliance.yml/badge.svg)](https://github.com/michtesar/hacker-news/actions/workflows/security-compliance.yml)
 [![Release Please](https://github.com/michtesar/hacker-news/actions/workflows/release-please.yml/badge.svg)](https://github.com/michtesar/hacker-news/actions/workflows/release-please.yml)
@@ -158,6 +159,7 @@ Release PR automation is configured using:
 - `/Users/michael/Developer/hacker-news/.release-please-manifest.json`
 
 Note:
+
 - The workflow uses `RELEASE_PLEASE_TOKEN` secret.
 - If the secret is missing, the workflow is skipped (so CI stays green).
 
